@@ -22,7 +22,7 @@ export default class App extends React.Component {
 
     let s = this.state
     s.resultado = imc
-    
+    /*Teste*/
 
     if(s.resultado < 16){
       s.resultadoText = "Magreza grave"
