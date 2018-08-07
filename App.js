@@ -17,39 +17,16 @@ export default class App extends React.Component {
     this.calcular = this.calcular.bind(this)
   }
 
-  calcular(){
-    let imc = this.state.massa / (this.state.altura * this.state.altura)
 
-    let s = this.state
-    s.resultado = imc
-    /*Teste*/
-
-    if(s.resultado < 16){
-      s.resultadoText = "Magreza grave"
-    }else if(s.resultado < 17){
-      s.resultadoText = "Magreza moderada"
-    }else if(s.resultado < 18.5){
-      s.resultadoText = "Magreza leve"
-    }else if(s.resultado < 25){
-      s.resultadoText = "Saudavel"
-    }else if(s.resultado < 30){
-      s.resultadoText = "Sobrepeso"
-    }else if(s.resultado < 35){
-      s.resultadoText = "obesidade Grau I"
-    }else if(s.resultado < 40){
-      s.resultadoText = "obesidade Grau II"
-    }else{
-      s.resultadoText = "obesidade Grau III"
-    }
-    this.setState(s)
-  }
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.entradas}>
-          <TextInput placeholder="Altura" keyboardType="numeric" style={styles.input} onChangeText={(altura)=>{this.setState({altura})}}/>
-          <TextInput placeholder="Massa" keyboardType="numeric" style={styles.input} onChangeText={(massa)=>{this.setState({massa})}}/>
+        <View style={styles.barrasSuperior}>
+          <Text style={styles.resultado}>Barras superiores</Text>
+          <TouchableOpacity style={styles.barraPequena}><Text style={styles.buttonText}>Esquerda</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.barraPequena}><Text style={styles.buttonText}>Todos</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.barraPequena}><Text style={styles.buttonText}>Direita</Text></TouchableOpacity>
         </View>
 
         <TouchableOpacity style={styles.button} onPress={this.calcular}><Text style={styles.buttonText}>Calcular</Text></TouchableOpacity>
@@ -74,7 +51,7 @@ const styles = StyleSheet.create({
     fontSize:50,
     marginTop:24,
   },
-  entradas:{
+  barrasSuperior:{
     flexDirection:"row"
   },
   button:{
@@ -91,5 +68,12 @@ const styles = StyleSheet.create({
     color:"lightgray",
     fontSize:65,
     padding:15
+  },
+  barraPequena:{
+    alignSelf:"center",
+    color:"lightgray",
+    fontSize:65,
+    padding:15,
+    width:"33%"
   }
 });
